@@ -1,15 +1,12 @@
-<%= form_for @user do |f| %>
-<%= f.label :first_name %>
-<%= f.text_field :first_name %>
-<%= f.label :last_name %>
-<%= f.text_field :last_name %>
-<%= f.label :username %>
-<%= f.text_field :username %>
-<%= f.label :email %>
-<%= f.text_field :email %>
-<%= f.label :password %>
-<%= f.text_field :password %>
-<%= f.label :password_confirmation %>
-<%= f.text_field :password_confirmation %>
-<%= f.submit %>
-<% end %>
+<div class="new-user-form">
+  <%= bootstrap_form_for(@user, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :username %>
+    <%= f.text_field :email %>
+    <%= f.text_field :password %>
+    <%= f.text_field :password_confirmation %>
+    <%= f.submit %>
+  <% end %>
+</div>
