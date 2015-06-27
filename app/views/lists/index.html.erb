@@ -1,0 +1,6 @@
+<div class="user-header"><h1><%= current_user.username %>'s task lists:</h1></div>
+<%= link_to "Create new list", new_list_path %>
+
+<% @lists.each do |list| %>
+<%= link_to "#{list.title}",list_path(list) %>
+<% end %>
