@@ -4,3 +4,7 @@
   margin-right: 200px;
   margin-top: 50px;
 }
+
+label.required:after {
+  content:" *";
+}

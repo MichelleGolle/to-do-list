@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@task, url: list_tasks_path, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+<%= bootstrap_form_for(@task, url: list_task_path(@task.list_id ,@task.id), method: :patch, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
 
   <%= f.text_field :title %>
   <%= f.form_group do %>
