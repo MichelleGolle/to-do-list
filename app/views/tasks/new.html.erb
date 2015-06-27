@@ -1,7 +1,7 @@
 <%= bootstrap_form_for(@task, url: list_tasks_path, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
 
   <%= f.text_field :title %>
-  <%= f.check_box :status, {}, "complete", "incomplete"%>
+  <%= f.check_box :completed %>
   <%= f.text_field :description %>
   <%= f.date_field :due_date %>
   <%= f.form_group do %>
