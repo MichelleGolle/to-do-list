@@ -19,6 +19,9 @@ class ListsController < ApplicationController
     @lists = current_user.lists
   end
 
+  def show
+  end
+
   private
 
   def list_params

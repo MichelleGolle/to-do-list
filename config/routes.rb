@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 root to: "home#index"
 
 resources :users
-resources :lists
+resources :lists do
+  resources :tasks
+end
 
 get "login", to:                  "sessions#new"
 post "login", to:                 "sessions#create"
