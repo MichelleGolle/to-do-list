@@ -16,7 +16,11 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = current_user.lists
+    @unarchived_lists = current_user.lists.where(archived: false)
+  end
+
+  def archived_index
+    @archived_lists = current_user.lists.where(archived: true)
   end
 
   def show

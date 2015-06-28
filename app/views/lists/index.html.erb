@@ -1,8 +1,11 @@
 <div class="user-header"><h1><%= current_user.username %>'s task lists:</h1></div>
-<%= link_to "Create new list", new_list_path %>
+<div class="newlist"><%= link_to "Create new list", new_list_path %></div><br><br>
 
-<% @lists.each do |list| %>
-<%= link_to "#{list.title}",list_tasks_path(list_id: list.id) %>
+<ul class="list-group">
+<% @unarchived_lists.each do |list| %>
+<li class="list-group-item"><%= link_to "#{list.title}",list_tasks_path(list_id: list.id) %>
 <%= link_to "Edit", edit_list_path(list) %>
-<%= link_to "Delete", list_path(list), method: "delete" %>
 <% end %>
+</ul>
+
+<%= link_to "See archived lists", archived_path %>

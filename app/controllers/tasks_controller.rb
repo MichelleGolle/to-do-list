@@ -2,8 +2,13 @@ class TasksController < ApplicationController
 
   def index
     list = List.find(params[:list_id])
-    @tasks = list.tasks
+    @incomplete_tasks = list.tasks.where(completed: false)
   end
+
+  # def completed_index
+  #   @list = List.find(params[:list_id])
+  #   @completed_tasks = list.tasks.where(completed: true)
+  # end
 
   def new
     @task = Task.new
@@ -41,9 +46,10 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title,
-                                 :status,
+                                 :completed,
                                  :description,
-                                 :due_date)
+                                 :due_date
+                                 )
   end
 
 end

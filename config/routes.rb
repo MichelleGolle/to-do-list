@@ -7,8 +7,12 @@ resources :lists do
   resources :tasks
 end
 
-get "login", to:                  "sessions#new"
-post "login", to:                 "sessions#create"
-delete '/logout', to:             'sessions#destroy'
+get "archived", to:  "lists#archived_index"
+get "lists/:id/completed", to:  "tasks#completed_index", as: :completed_tasks
+
+
+get "login", to:     "sessions#new"
+post "login", to:    "sessions#create"
+delete "logout", to: "sessions#destroy"
 
 end
