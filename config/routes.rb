@@ -2,13 +2,14 @@ Rails.application.routes.draw do
 
 root to: "home#index"
 
+resources :tags, only: [:index] 
 resources :users
 resources :lists do
   resources :tasks
+  get "/tasks/completed", to: "tasks#show"
 end
 
 get "archived", to:  "lists#archived_index"
-get "lists/:id/completed", to:  "tasks#completed_index", as: :completed_tasks
 
 
 get "login", to:     "sessions#new"

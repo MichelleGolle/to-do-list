@@ -1,6 +1,3 @@
-<%= link_to "Add new task", new_list_task_path %>
-
-<div id="task-table">
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -12,15 +9,16 @@
   </thead>
   <tbody>
 
-    <tr class="task"><% @incomplete_tasks.each do |task| %>
-      <td class="task-title"><%= task.title %></td>
+    <tr><% @incomplete_tasks.each do |task| %>
+      <td><%= task.title %></td>
       <td><%= task.description %></td>
       <td><%= task.due_date %></td>
       <td><% task.tags.each do |tag| %>
             <%= tag.name %>
           <% end %>
       </td>
-      <td><%= link_to "Edit", edit_list_task_path(id: task.id) %></td></tr>
+      <td><%= link_to "Edit", edit_list_task_path(id: task.id) %></td>
+      <td><%= link_to "Delete", list_task_path(id: task.id) %></td></tr>
     <% end %>
 
 
@@ -29,6 +27,5 @@
 </table>
 </div>
 
-
-
-<%= link_to "View completed tasks", list_tasks_completed_path %>
+</body>
+</html>

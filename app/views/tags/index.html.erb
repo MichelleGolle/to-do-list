@@ -1,0 +1,7 @@
+<% @tags.each do |tag| %>
+  <h3><%= tag.name %></h3><br>
+  <% tag.tasks.each do |task| %>
+    <b>Task: </b><%= task.title %>
+    <b>List: </b><%= task.list.title %><br>
+  <% end %>
+<% end %><br><br>
