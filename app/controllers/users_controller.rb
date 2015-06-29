@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to lists_path
     else
-      flash[:notice] = "Invalid fields"
+      flash[:danger] = "Invalid fields"
       render :new
     end
   end

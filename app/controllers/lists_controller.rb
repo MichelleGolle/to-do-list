@@ -7,10 +7,10 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.new(list_params)
     if @list.save
-      flash[:notice] = "List successfully created"
+      flash[:success] = "List successfully created"
       redirect_to lists_path
     else
-      flash[:notice] = "Invalid entry"
+      flash[:danger] = "Invalid entry"
       render :new
     end
   end
@@ -35,7 +35,7 @@ class ListsController < ApplicationController
     if @list.update(list_params)
       redirect_to lists_path
     else
-      flash[:notice] = "Invalid entry"
+      flash[:danger] = "Invalid entry"
       render :edit
     end
   end

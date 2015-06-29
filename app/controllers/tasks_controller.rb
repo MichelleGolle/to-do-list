@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    if params[:search]
+    if params[:search] && params[:search] != ''
       list = List.find(params[:list_id])
       @incomplete_tasks = list.tasks.where(completed: false).map do |task|
         if task.tags.where(name: params[:search]).length > 0
@@ -15,8 +15,17 @@ class TasksController < ApplicationController
   end
 
   def show
+    if params[:search] && params[:search] != ''
+      list = List.find(params[:list_id])
+      @complete_tasks = list.tasks.where(completed: true).map do |task|
+        if task.tags.where(name: params[:search]).length > 0
+          task
+        end
+      end.compact
+    else
     list = List.find(params[:list_id])
     @complete_tasks = list.tasks.where(completed: true)
+  end
   end
 
   def new
@@ -49,6 +58,10 @@ class TasksController < ApplicationController
     list = List.find(params[:list_id])
     @task = list.tasks.find(params[:id])
     if @task.update(task_params)
+      tags = params[:task][:tag_ids].reject(&:empty?)
+      tags.each do |id|
+        @task.tags << Tag.find(id)
+      end
       redirect_to list_tasks_path
     else
       flash[:notice] = "Invalid entry"

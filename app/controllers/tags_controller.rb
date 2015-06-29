@@ -11,10 +11,10 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      flash[:notice] = "Tag successfully created"
+      flash[:success] = "Tag successfully created"
       redirect_to tags_path
     else
-      flash[:notice] = "Invalid entry"
+      flash[:danger] = "Invalid entry"
       render :new
     end
   end
