@@ -89,8 +89,9 @@ class TasksController < ApplicationController
 
   def assign_tags
     tags = params[:task][:tag_ids].reject(&:empty?)
+    @task.tags.clear
     tags.each do |id|
-      @task.tags << Tag.find(id)
+      @task.tags << Tag.find(id) #unless @task.tags.include(Tag.find(id))
     end
   end
 end
