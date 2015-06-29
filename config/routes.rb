@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 root to: "home#index"
 
-resources :tags, only: [:index] 
+resources :tags, only: [:index, :new, :create] 
 resources :users
 resources :lists do
   resources :tasks

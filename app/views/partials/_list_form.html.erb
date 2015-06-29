@@ -2,7 +2,7 @@
 
   <%= f.text_field :title %>
   <%= f.form_group do %>
-    <%= f.check_box :archived %>
+    <%= f.check_box :archived, id: "arch" %>
   <% end %>
   <%= f.form_group do %>
     <%= f.submit "Submit" %>

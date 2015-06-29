@@ -19,17 +19,17 @@ RSpec.describe "User login" do
   end
 
   context "as a registered user" do
-    xit  "I can log in" do
-      user = User.create(username: "mg", email: "michelle@gmail.com", password: "password", password_confirmation: "password")
+    it  "I can log in" do
+      user = User.create(username: "rob", email: "rob@gmail.com", password: "password", password_confirmation: "password")
 
       visit root_path
 
       click_link_or_button "Log In"
-      fill_in "Email", with: "michelle@gmail.com"
+      fill_in "Email", with: "rob@gmail.com"
       fill_in "Password", with: "password"
       click_link_or_button "Submit"
 
-      expect(page).to have_content("mg")
+      expect(page).to have_content("rob")
     end
   end
 

@@ -1,8 +1,17 @@
 class TasksController < ApplicationController
 
   def index
+    if params[:search]
+      list = List.find(params[:list_id])
+      @incomplete_tasks = list.tasks.where(completed: false).map do |task|
+        if task.tags.where(name: params[:search]).length > 0
+          task
+        end
+      end.compact
+    else
       list = List.find(params[:list_id])
       @incomplete_tasks = list.tasks.where(completed: false)
+    end
   end
 
   def show
@@ -23,8 +32,8 @@ class TasksController < ApplicationController
       tags.each do |id|
         @task.tags << Tag.find(id)
       end
-        flash[:notice] = "Task successfully created"
-        redirect_to list_tasks_path
+      flash[:notice] = "Task successfully created"
+      redirect_to list_tasks_path
     else
         render :new
     end
